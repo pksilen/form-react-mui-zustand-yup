@@ -3,10 +3,11 @@ import React from 'react';
 
 type Props = {
   children: React.ReactNode;
+  className?: string;
 };
 
-export const SubmitButton = ({ children }: Props) => (
-  <Button size="large" sx={{ marginTop: '20px' }} type="submit" variant="contained">
+export const SubmitButton = ({ children, className }: Props) => (
+  <Button className={className} size="large" type="submit" variant="contained">
     {children}
   </Button>
 );

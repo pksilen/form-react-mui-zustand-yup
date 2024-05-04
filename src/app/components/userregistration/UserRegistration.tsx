@@ -49,7 +49,7 @@ export const UserRegistration = () => {
       </fieldset>
       {createTextInput('email')}
       {createTextInput('phoneNumber')}
-      <SubmitButton>Register</SubmitButton>
+      <SubmitButton className={classes.button}>Register</SubmitButton>
       {error && (
         <ErrorAlert classes={classes.alert}>Registration failed. Please try again.</ErrorAlert>
       )}

@@ -2,9 +2,13 @@
   display: flex;
   flex-direction: column;
 
-   .inlineFields {
+  .inlineFields {
     display: flex;
     gap: 20px;
+  }
+
+  .button {
+    margin-top: 30px;
   }
 
   .alert {
