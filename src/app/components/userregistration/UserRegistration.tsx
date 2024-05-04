@@ -8,7 +8,8 @@ import classes from './UserRegistration.module.scss';
 import { defaultValues, resolver, UserSchema } from './userSchema';
 
 const ControlledFormTextInput = createControlledFormInput<TextInputProps, UserSchema>(TextInput, {
-  classes: classes.textInput,
+  className: classes.textInput,
+  maxLength: 128,
   required: true
 });
 
@@ -37,7 +38,7 @@ export const UserRegistration = () => {
 
   return (
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-      <fieldset className={classes.inline}>
+      <fieldset className={classes.inlineFields}>
         {createTextInput('firstName')}
         {createTextInput('lastName')}
       </fieldset>
@@ -49,7 +50,9 @@ export const UserRegistration = () => {
       {createTextInput('email')}
       {createTextInput('phoneNumber')}
       <SubmitButton>Register</SubmitButton>
-      {error && <ErrorAlert>Registration failed. Please try again.</ErrorAlert>}
+      {error && (
+        <ErrorAlert classes={classes.alert}>Registration failed. Please try again.</ErrorAlert>
+      )}
     </form>
   );
 };

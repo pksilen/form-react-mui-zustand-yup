@@ -12,9 +12,9 @@ export const UserList = () => {
   );
 
   return (
-    <>
+    <section>
       <h2>Users</h2>
       <ul>{userListItems}</ul>
-    </>
+    </section>
   );
 };

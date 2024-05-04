@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import React from 'react';
 
 export type TextInputProps = {
-  classes?: string;
+  className?: string;
   error?: string | null | undefined;
   label?: string;
   maxLength?: number | undefined;
@@ -10,9 +10,9 @@ export type TextInputProps = {
 };
 
 export const TextInput = React.forwardRef(
-  ({ classes, error, label, maxLength, required, ...restOfProps }: TextInputProps, ref) => (
+  ({ className, error, label, maxLength, required, ...restOfProps }: TextInputProps, ref) => (
     <TextField
-      className={classes}
+      className={className}
       error={!!error}
       helperText={error}
       inputProps={{ maxLength }}
