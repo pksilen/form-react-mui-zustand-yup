@@ -43,7 +43,7 @@ export const UserRegistration = () => {
         {createTextInput('lastName')}
       </fieldset>
       {createTextInput('streetAddress')}
-      <fieldset className={classes.inline}>
+      <fieldset className={classes.inlineFields}>
         {createTextInput('zipCode')}
         {createTextInput('city')}
       </fieldset>
