@@ -8,7 +8,6 @@ import classes from './UserRegistration.module.scss';
 import { defaultValues, resolver, UserSchema } from './userSchema';
 
 const ControlledFormTextInput = createControlledFormInput<TextInputProps, UserSchema>(TextInput, {
-  className: classes.textInput,
   maxLength: 128,
   required: true
 });
