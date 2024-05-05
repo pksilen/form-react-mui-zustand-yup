@@ -50,7 +50,7 @@ export const UserRegistration = () => {
       {createTextInput('phoneNumber')}
       <SubmitButton className={classes.button}>Register</SubmitButton>
       {error && (
-        <ErrorAlert classes={classes.alert}>Registration failed. Please try again.</ErrorAlert>
+        <ErrorAlert className={classes.alert}>Registration failed. Please try again.</ErrorAlert>
       )}
     </form>
   );
