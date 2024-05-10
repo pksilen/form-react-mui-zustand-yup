@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import React from 'react';
 
-export type Props = Readonly<{
+export type TextInputProps = Readonly<{
   className?: string;
   error?: string | null | undefined;
   label?: string;
@@ -10,7 +10,7 @@ export type Props = Readonly<{
 }>;
 
 export const TextInput = React.forwardRef(
-  ({ className, error, label, maxLength, required, ...restOfProps }: Props, ref) => (
+  ({ className, error, label, maxLength, required, ...restOfProps }: TextInputProps, ref) => (
     <TextField
       className={className}
       error={!!error}
