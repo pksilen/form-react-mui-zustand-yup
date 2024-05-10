@@ -1,8 +1,11 @@
 import { FieldPath, SubmitHandler, useForm } from 'react-hook-form';
-import { ErrorAlert } from '../../common/components/presentational/alerts/ErrorAlert';
-import { SubmitButton } from '../../common/components/presentational/buttons/SubmitButton';
-import { createControlledFormInput } from '../../common/components/presentational/factories/createControlledFormInput';
-import { TextInput, TextInputProps } from '../../common/components/presentational/input/TextInput';
+import { ErrorAlert } from '../../common/components/stateless/alerts/ErrorAlert';
+import { SubmitButton } from '../../common/components/stateless/buttons/SubmitButton';
+import { createControlledFormInput } from '../../common/components/stateless/input/createControlledFormInput';
+import {
+  Props as TextInputProps,
+  TextInput
+} from '../../common/components/stateless/input/TextInput';
 import { useUserStore } from '../../stores/userStore';
 import classes from './UserRegistration.module.scss';
 import { defaultValues, resolver, UserSchema } from './userSchema';
@@ -20,14 +23,14 @@ export const UserRegistration = () => {
     control,
     formState: { errors },
     handleSubmit,
-    reset
+    reset: resetForm
   } = useForm<UserSchema>({ defaultValues, resolver });
 
   const onSubmit: SubmitHandler<UserSchema> = async (user) => {
-    const didSucceed = await createUser(user);
+    const userWasCreated = await createUser(user);
 
-    if (didSucceed) {
-      reset();
+    if (userWasCreated) {
+      resetForm();
     }
   };
 
