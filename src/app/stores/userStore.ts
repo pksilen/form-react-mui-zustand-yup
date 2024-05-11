@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { UserSchema } from '../components/userregistration/userSchema';
+import { UserSchema } from '../components/userregistrationform/userSchema';
 import { userService } from '../services/FakeUserService';
 import { User } from './User';
 
@@ -21,18 +21,17 @@ export const useUserStore = create<UserStore>()((setState, getState) => ({
 
   actions: {
     registerUser: async (user: UserSchema) => {
-      let userWasRegistered = true;
+      let registeredUser: User | undefined;
 
       try {
-        const registeredUser = await userService.registerUser(user);
+        registeredUser = await userService.registerUser(user);
         setState({ error: null, users: [...getState().users, registeredUser] });
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         setState({ error });
-        userWasRegistered = false;
       }
 
-      return userWasRegistered;
+      return !!registeredUser;
     },
 
     fetchUsers: async () => {

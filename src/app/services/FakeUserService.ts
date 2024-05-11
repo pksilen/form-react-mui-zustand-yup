@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { UserSchema } from '../components/userregistration/userSchema';
+import { UserSchema } from '../components/userregistrationform/userSchema';
 import { User } from '../stores/User';
 import { UserService } from './UserService';
 
