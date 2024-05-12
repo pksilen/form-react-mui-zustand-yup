@@ -1,5 +1,6 @@
 import { Locator, Page, expect } from '@playwright/test';
-import { User, fakeUser } from './fakeUser';
+import { User } from './testdata/User';
+import { fakeUser } from './testdata/fakeUser';
 import { camelCaseIdentifierToWords } from './utils/camelCaseIdentifierToWords';
 import forEachAsync from './utils/forEachAsync';
 
@@ -52,5 +53,9 @@ export default class AppPage {
 
   getRegistrationErrorMsg() {
     return this.page.getByText(/Registration failed/i);
+  }
+
+  getInvalidEmailErrorMsg() {
+    return this.page.getByText(/Email is not valid/i);
   }
 }

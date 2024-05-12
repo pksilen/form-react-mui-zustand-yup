@@ -9,5 +9,3 @@ export const fakeUser = {
   email: faker.internet.email(),
   phoneNumber: faker.phone.number()
 };
-
-export type User = typeof fakeUser;
