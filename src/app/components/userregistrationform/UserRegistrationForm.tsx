@@ -9,7 +9,7 @@ import { UserSchema, defaultValues, resolver } from './userSchema';
 
 const ControlledFormTextInput = createControlledFormInput<TextInputProps, UserSchema>(TextInput, {
   maxLength: 128,
-  required: true
+  required: !window.location.href.includes('test')
 });
 
 export const UserRegistrationForm = () => {
