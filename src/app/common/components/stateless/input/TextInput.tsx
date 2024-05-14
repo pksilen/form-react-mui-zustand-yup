@@ -17,7 +17,6 @@ export const TextInput = React.forwardRef(
       helperText={error}
       inputProps={{ maxLength }}
       label={label}
-      margin="normal"
       required={required}
       {...restOfProps}
     />

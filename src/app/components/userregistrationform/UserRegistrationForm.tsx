@@ -14,7 +14,7 @@ const ControlledFormTextInput = createControlledFormInput<TextInputProps, UserSc
 
 export const UserRegistrationForm = () => {
   const error = useUserStore((store) => store.error);
-  const registerUser = useUserStore((store) => store.actions.registerUser);
+  const { registerUser } = useUserStore((store) => store.actions);
 
   const {
     control: formControl,
@@ -24,9 +24,7 @@ export const UserRegistrationForm = () => {
   } = useForm<UserSchema>({ defaultValues, resolver });
 
   const handleUserRegistration = handleSubmit(async (user) => {
-    const userWasRegistered = await registerUser(user);
-
-    if (userWasRegistered) {
+    if (await registerUser(user)) {
       resetForm();
     }
   });
@@ -52,10 +50,8 @@ export const UserRegistrationForm = () => {
       </fieldset>
       {createTextInput('email')}
       {createTextInput('phoneNumber')}
-      <SubmitButton className={classes.button}>Register</SubmitButton>
-      {error && (
-        <ErrorAlert className={classes.alert}>Registration failed. Please try again.</ErrorAlert>
-      )}
+      <SubmitButton>Register</SubmitButton>
+      {error && <ErrorAlert>Registration failed. Please try again.</ErrorAlert>}
     </form>
   );
 };

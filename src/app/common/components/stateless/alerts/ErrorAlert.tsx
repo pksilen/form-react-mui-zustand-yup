@@ -3,7 +3,7 @@ import React from 'react';
 
 type Props = Readonly<{
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }>;
 
 export const ErrorAlert = ({ children, className }: Props) => (
