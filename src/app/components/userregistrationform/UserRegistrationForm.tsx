@@ -1,11 +1,11 @@
-import { FieldPath, useForm } from 'react-hook-form';
+import { FieldPath } from 'react-hook-form';
 import { ErrorAlert } from 'app/common/components/stateless/alerts/ErrorAlert';
 import { SubmitButton } from 'app/common/components/stateless/buttons/SubmitButton';
 import { TextInput, TextInputProps } from 'app/common/components/stateless/input/TextInput';
 import { createControlledFormInput } from 'app/common/components/stateless/input/factories/createControlledFormInput';
-import { useUserStore } from 'app/stores/userStore';
 import classes from './UserRegistrationForm.module.scss';
-import { UserSchema, defaultValues, resolver } from './userSchema';
+import { useUserRegistration } from './hooks/useUserRegistration';
+import { UserSchema } from './userSchema';
 
 const ControlledFormTextInput = createControlledFormInput<TextInputProps, UserSchema>(TextInput, {
   maxLength: 128,
@@ -13,26 +13,12 @@ const ControlledFormTextInput = createControlledFormInput<TextInputProps, UserSc
 });
 
 export const UserRegistrationForm = () => {
-  const error = useUserStore((store) => store.error);
-  const { registerUser } = useUserStore((store) => store.actions);
-
-  const {
-    control: formControl,
-    formState: { errors: formErrors },
-    handleSubmit,
-    reset: resetForm
-  } = useForm<UserSchema>({ defaultValues, resolver });
-
-  const handleUserRegistration = handleSubmit(async (user) => {
-    if (await registerUser(user)) {
-      resetForm();
-    }
-  });
+  const { error, form, handleUserRegistration } = useUserRegistration();
 
   const createTextInput = (formFieldName: FieldPath<UserSchema>) => (
     <ControlledFormTextInput
-      formControl={formControl}
-      formErrors={formErrors}
+      formControl={form.control}
+      formErrors={form.formState.errors}
       formFieldName={formFieldName}
     />
   );
