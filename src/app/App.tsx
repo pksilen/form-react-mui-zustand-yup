@@ -20,15 +20,13 @@ const theme = createTheme({
   }
 });
 
-export default function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <main className={classNames.main}>
-        <UserRegistrationForm />
-        <div className={classNames.verticalDivider}></div>
-        <UserList />
-      </main>
-    </ThemeProvider>
-  );
-}
+export const App = () => (
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <main className={classNames.main}>
+      <UserRegistrationForm />
+      <div className={classNames.verticalDivider}></div>
+      <UserList />
+    </main>
+  </ThemeProvider>
+);
